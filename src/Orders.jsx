@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Navbar from './Components/Navbar';
+import { env } from './Config';
 
 function Orders() {
     const [data, setData] = useState([]);
@@ -11,7 +12,7 @@ function Orders() {
   
     let LoadData = async () => {
       setloading(true)
-      let products = await axios.get('http://localhost:3004/orders');
+      let products = await axios.get(`${env.api}/orders`);
       setData(products.data);
       setloading(false)
       console.log(data)

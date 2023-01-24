@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Carousel from "./Components/Carousel";
 import Pagination from "./Pagination";
+import { env } from "./Config";
 
 
 
@@ -28,7 +29,7 @@ function Dashboard({cart, addToCart, count }) {
 
   let LoadData = async () => {
     setloading(true)
-    let products = await axios.get('http://localhost:3004/products');
+    let products = await axios.get(`${env.api}/products`);
     setData(products.data);
     setloading(false)
     console.log(products.data)
