@@ -11,13 +11,14 @@ import Cart from "./Cart";
 import { ToastContainer, toast } from "react-toastify";
 import Orders from "./Orders";
 import AdminPage from "./AdminPage";
+import { env } from "./Config";
 
 function App() {
 
   const [count, setCount] = useState(0);
 
   // console.log(data);
-  const socket = io("https://realme-store-guvi.onrender.com")
+  const socket = io(env.api)
   socket.on("connect", () => {
   })
   socket.on("recive-notification", message => {
