@@ -18,9 +18,7 @@ function App() {
   const [count, setCount] = useState(0);
 
   // console.log(data);
-  const socket = io(env.api)
-  socket.on("connect", () => {
-  })
+  const socket = io.connect()
   socket.on("recive-notification", message => {
     toast.success(message, {
     });
