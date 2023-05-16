@@ -18,7 +18,7 @@ function App() {
   const [count, setCount] = useState(0);
 
   // console.log(data);
-  const socket = io("https://realme-store-guvi.onrender.com")
+  const socket = io()
   socket.on("recive-notification", message => {
     toast.success(message, {
     });
