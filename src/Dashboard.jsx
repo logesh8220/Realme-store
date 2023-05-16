@@ -14,7 +14,7 @@ import { env } from "./Config";
 
 
 
-function Dashboard({cart, addToCart, count }) {
+function Dashboard({cart, addToCart, count}) {
 
   // const location=useLocation();
   // let username=location.state
@@ -60,14 +60,15 @@ function Dashboard({cart, addToCart, count }) {
             
               {
                  isloading?<div class="d-flex justify-content-center">
-                 <div class="spinner-border" role="status">
-                   <span class="visually-hidden">Loading...</span>
+                 <div className="spinner-border" role="status">
+                   <span className="visually-hidden">Loading...</span>
                  </div>
                </div>:
                 //etha loop pannanum products ah so products.map
                 currentPost.map((item, index) => {
                   return (
                     <Card
+                    key={index}
                       res={item}
                       handleAddToCart={addToCart}
                       cart={cart}

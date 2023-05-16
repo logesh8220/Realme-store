@@ -4,13 +4,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { env } from "./Config";
-
+import { io } from "socket.io-client";
 import Dashboard from "./Dashboard";
 import ProtectedRoutes from "./ProtectedRoutes";
 import Signup from "./Signup";
 import ViewProduct from "./ViewProduct";
 import Cart from "./Cart";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import Orders from "./Orders";
 import AdminPage from "./AdminPage";
 
@@ -27,6 +27,13 @@ function App() {
     setData(products.data);
   };
   // console.log(data);
+  const socket = io(env.api)
+  socket.on("connect", () => {
+  })
+  socket.on("recive-notification", message => {
+    toast.success(message, {
+    });
+  })
 
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
@@ -35,6 +42,8 @@ function App() {
     setCount(count + 1);
     setCart([...cart, res]);
     setTotal(total + res.price);
+    socket.emit("send-notification", "Product Added In Cart")
+
   };
 
   let removeCart = (res1) => {
@@ -45,8 +54,8 @@ function App() {
     cart.splice(index);
     setCart([...cart]);
     setTotal(total - res1.price);
+    socket.emit("send-notification", "Product Removed from Cart")
   };
-
 
 
   return (

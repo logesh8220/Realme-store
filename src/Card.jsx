@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Card({ res, handleAddToCart, cart ,index }) {
+function Card({ res, handleAddToCart, cart ,index,socket }) {
   return (
     <div className="col-lg-3 col-md-6 d-flex justify-content-center">
       <div className="card  text-center cards" style={{ width: "20rem" }}>
@@ -13,7 +13,7 @@ function Card({ res, handleAddToCart, cart ,index }) {
             to={`/product/${res._id}`} 
             className="btn btn-warning text-light  btn-sm me-3"
           >
-            <i class="fa-solid fa-eye me-1"></i>View Product
+            <i className="fa-solid fa-eye me-1"></i>View Product
           </Link>
           <button
             disabled={cart.find((obj) => obj._id === res._id)}
