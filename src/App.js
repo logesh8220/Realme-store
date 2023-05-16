@@ -27,7 +27,7 @@ function App() {
     setData(products.data);
   };
   // console.log(data);
-  const socket = io(env.api)
+  const socket = io("https://realme-store-guvi.onrender.com")
   socket.on("connect", () => {
   })
   socket.on("recive-notification", message => {
