@@ -1,8 +1,7 @@
 import "./App.css";
 import Login from "./Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState} from "react";
 import { io } from "socket.io-client";
 import Dashboard from "./Dashboard";
 import ProtectedRoutes from "./ProtectedRoutes";
@@ -14,17 +13,9 @@ import Orders from "./Orders";
 import AdminPage from "./AdminPage";
 
 function App() {
-  const [data, setData] = useState([]);
+
   const [count, setCount] = useState(0);
 
-  useEffect(() => {
-    LoadData();
-  }, []);
-
-  let LoadData = async () => {
-    let products = await axios.get(`http://localhost:3004/products`);
-    setData(products.data);
-  };
   // console.log(data);
   const socket = io("https://realme-store-guvi.onrender.com")
   socket.on("connect", () => {
@@ -70,7 +61,6 @@ function App() {
               element={
                 <Dashboard
                   count={count}
-                  data={data}
                   cart={cart}
                   addToCart={addToCart}
                 />
