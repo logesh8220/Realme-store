@@ -3,7 +3,6 @@ import Login from "./Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { env } from "./Config";
 import { io } from "socket.io-client";
 import Dashboard from "./Dashboard";
 import ProtectedRoutes from "./ProtectedRoutes";
